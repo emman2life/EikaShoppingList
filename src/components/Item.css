@@ -1,0 +1,7 @@
+.item{
+    display: grid;
+    grid-template-columns: 2rem 1fr 5rem;
+    width: 100%;
+    align-items: center;
+}
+
