@@ -1,0 +1,12 @@
+.sort-button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+}
+.sort-wrapper{
+    display: flex;
+    margin: 1rem;
+    
+}
