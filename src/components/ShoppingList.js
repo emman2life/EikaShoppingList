@@ -1,8 +1,8 @@
 import Item from './Item';
 import './ShoppingList.css';
-import useFetch from '../useFetch';
 import SortList from './sort/SortList';
-import { useEffect, useState } from 'react';
+import {useContext} from 'react';
+import { ListContext } from '../ListContext';
 
 
 const welcomeText = <p className="welcome-text">Welcome to EIKA, thank for using this application. To add item to your shopping list, click the button “Add item” below.</p>
@@ -10,19 +10,24 @@ const welcomeText = <p className="welcome-text">Welcome to EIKA, thank for using
 
 const ShoppingList = (props)=>{
 
-const list = useFetch(props.sortName);
+  const{list, updateShopping} = useContext(ListContext);
 
 
 
+
+// const updateList = (itemToUpdate) => {
+//   const storedList = [...list]
+
+//   const newList = storedList.map((item)=>
+//     item.id === itemToUpdate.id?{...item,acquired: !item.acquired}:item
+//   );
+
+
+//   localStorage.setItem('list', JSON.stringify(newList));
+
+// };
 const updateList = (itemToUpdate) => {
-  const storedList = [...list]
-
-  const newList = storedList.map((item)=>
-    item.id === itemToUpdate.id?{...item,acquired: !item.acquired}:item
-  );
-
-
-  localStorage.setItem('list', JSON.stringify(newList));
+  updateShopping(itemToUpdate);
 
 };
 
