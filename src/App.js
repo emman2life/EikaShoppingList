@@ -6,6 +6,7 @@ import ReactDOM from "react-dom";
 import { useState } from 'react';
 import ListDisplay from './components/shoppingStatus/ListDisplay';
 import useFetch from './useFetch';
+import { ListContext } from './ListContext';
 
 function App() {
   const [sortBy, setSortBy] = useState("name");
@@ -31,8 +32,20 @@ function App() {
     })
 
   }
-
+  const updateShopping = (itemToUpdate) => {
+    const storedList = [...list]
+  
+    const newList = storedList.map((item)=>
+      item.id === itemToUpdate.id?{...item,acquired: !item.acquired}:item
+    );
+    localStorage.setItem('list', JSON.stringify(newList));
+    setSortBy((curState)=>{
+      return{...curState}
+    });
+  
+  };
   return (
+    <ListContext.Provider value={{list, updateShopping}}>
     <div className="App">
       <img className="logo" src={logo} alt="eika"/>
       <h1>Shopping List</h1>
@@ -44,6 +57,7 @@ function App() {
       <button onClick={showForm} className="btn">Add</button>
       {list.length>0?<ListDisplay acquiredStatus={isAcquired} onShowList={showList}/>:""}
     </div>
+    </ListContext.Provider>
   );
 }
 
