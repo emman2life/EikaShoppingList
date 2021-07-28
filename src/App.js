@@ -5,11 +5,18 @@ import ItemForm from './components/AddItem/ItemForm';
 import ReactDOM from "react-dom";
 import { useState } from 'react';
 import ListDisplay from './components/shoppingStatus/ListDisplay';
+import useFetch from './useFetch';
 
 function App() {
-
+  const [sortBy, setSortBy] = useState("name");
   const [isAddFormDisplay, setIsAddFormDisplay] = useState(false);
   const [isAcquired, setIsAcquired] = useState(true);
+
+  const list = useFetch(sortBy);
+  const sortByHandler = (sortByString) => {
+
+    setSortBy(sortByString);
+  };
 
   const showForm = ()=>{
     setIsAddFormDisplay(true);
@@ -22,20 +29,20 @@ function App() {
     setIsAcquired(prevState=>{
       return !prevState
     })
-    console.log(isAcquired);
+
   }
 
   return (
     <div className="App">
       <img className="logo" src={logo} alt="eika"/>
       <h1>Shopping List</h1>
-      <ShoppingList acquired={isAcquired}/>
+      <ShoppingList acquired={isAcquired} onSort={sortByHandler} sortName={sortBy}/>
       
      { isAddFormDisplay===true? ReactDOM.createPortal(
       <ItemForm onCloseForm={closeForm}/>, document.getElementById('add-form-root')
      ):''}
       <button onClick={showForm} className="btn">Add</button>
-      <ListDisplay acquiredStatus={isAcquired} onShowList={showList}/>
+      {list.length>0?<ListDisplay acquiredStatus={isAcquired} onShowList={showList}/>:""}
     </div>
   );
 }

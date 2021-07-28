@@ -1,11 +1,18 @@
 import { useEffect, useState } from 'react';
 import './ItemForm.css'
 
+
+const item = {
+    name: '',
+    price: '',
+    id: 0,
+    imgUlr:'',
+    acquired:false
+}
 const ItemForm = (props)=>{
-    const [inputName, setInputName] = useState('');
-    const [inputPrice, setInputPrice] = useState('');
+    const [itemInput, setItemInput] = useState(item);
     const [validInput, setValidInput] = useState(false);
-    const [storedList, setStoredList] = useState(()=>{
+    const [, setStoredList] = useState(()=>{
     try{
     return JSON.parse(localStorage.getItem("list")) ?? []
     }
@@ -14,45 +21,29 @@ const ItemForm = (props)=>{
         return [];
     }
 });
-    
-    
-    const nameChangeHandler = (event)=>{
-     
-            setInputName(event.target.value);
-        }
-    
-    const priceChangeHandler = (event) =>{
-        setInputPrice(event.target.value);
+    const changeHandler = (event)=>{
+        setItemInput((prevItem)=>{
+           return {...prevItem,
+            [event.target.id]: event.target.value}
+        })
     }
-    // useEffect(()=>{
-    //     localStorage.setItem('list', JSON.stringify(storedList))
-    // },[storedList]);
-
 
     useEffect(()=>{
-        if(inputName.trim()>0 || inputPrice.trim()>0){
+        if(itemInput.name.trim()>0 || itemInput.price.trim()>0){
             setValidInput(true);
         }else{
             setValidInput(false);
         }
     
-        if(+inputPrice<0)return;
-    },[inputPrice, inputName])
+        if(+itemInput.price<0)return;
+    },[itemInput])
 
   
 
     const submitHandler = event =>{
         event.preventDefault();
-        const itemEntered = {
-            name: inputName,
-            price: inputPrice,
-            id: Math.random().toString(),
-            imgUlr:'',
-            acquired:false
-        }
-       
-      
-        // const localList = storedList!==null ? JSON.parse(storedList) : [];
+   
+       const itemEntered = {...itemInput,id:Math.random().toString()}
         setStoredList((prevState)=>{
             const newList = [...prevState, itemEntered];
             localStorage.setItem('list', JSON.stringify(newList));
@@ -62,8 +53,8 @@ const ItemForm = (props)=>{
         
         props.onCloseForm();
         setValidInput(false);
-        setInputName('');
-        setInputPrice('');
+        setItemInput('');
+       
     
     }
 
@@ -78,8 +69,8 @@ const ItemForm = (props)=>{
                     <label htmlFor="name">Name</label>
                     <input type="text" 
                     id="name" 
-                    value={inputName}
-                    onChange={nameChangeHandler}/>
+                    value={itemInput.name}
+                    onChange={changeHandler}/>
                 </div>
                 <div className="new-item-content">
                     <label htmlFor="price">Price</label>
@@ -87,8 +78,8 @@ const ItemForm = (props)=>{
                     id="price" 
                     type="number" 
                     min="0.01" step="0.01"
-                    value={inputPrice} 
-                    onChange={priceChangeHandler}/>
+                    value={itemInput.price} 
+                    onChange={changeHandler}/>
                 </div>
               
                 <div className="add-item-button-container">
