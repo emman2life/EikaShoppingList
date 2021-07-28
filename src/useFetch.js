@@ -18,7 +18,8 @@ const sortByName = function (itemList) {
     });
   };
 
-const useFetch = (localData, sortBy)=>{
+const useFetch = (sortBy)=>{
+    const localData = localStorage.getItem("list");
     const storedItems = localData ? JSON.parse(localData) : []
     const [itemList, setItemList] = useState(storedItems);
     const sortList = (list) => {
@@ -28,7 +29,7 @@ const useFetch = (localData, sortBy)=>{
         localData!==null &&
         setItemList(() => {
           const newList = JSON.parse(localData);
-               sortList(newList);   
+               sortList(newList);  
           return newList;
         });
       }, [localData,sortBy]);
