@@ -45,13 +45,13 @@ const items = filteredList.map((item)=>(
     onAcquired={()=>updateList(item)} />
 ));
 
-return <>
+return <div className="item-list">
 {items.length>0?
 <>
 <SortList onSort={props.onSort}/>
      {items}</>: welcomeText}
 
-</>
+</div>
 
 
 }

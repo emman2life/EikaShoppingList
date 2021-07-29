@@ -5,11 +5,16 @@ const Item = (props)=>{
     
 return( 
 <div className="item">
+    <div className="item-bag">
     <div className="item-checkbox-section">
         <input type="checkbox" checked={props.acquired} onChange={props.onAcquired}/>
         </div>
+    <div className="item-image">
+        <img src="" alt=""/>
+    </div>
     <p>{props.name}</p>
     <p className="item-price">{props.price}<span>:-</span></p>
+    </div>
 </div>)
 }
 

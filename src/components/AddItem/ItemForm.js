@@ -51,7 +51,7 @@ const ItemForm = (props)=>{
         })
       
         
-        props.onCloseForm();
+        props.dispatch({type: "close"});
         setValidInput(false);
         setItemInput('');
        
@@ -60,7 +60,7 @@ const ItemForm = (props)=>{
 
 
         return <div className="form-container">
-      <button className="closeAdd" onClick={props.onCloseForm}>X</button>
+      <button className="closeAdd" onClick={()=>props.dispatch({type: "close"})}>X</button>
       <form onSubmit={submitHandler}>
             <div className="new-item-wrapper">
               
