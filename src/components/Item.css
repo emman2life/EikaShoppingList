@@ -1,7 +1,13 @@
 .item{
-    display: grid;
-    grid-template-columns: 2rem 1fr 5rem;
     width: 100%;
-    align-items: center;
 }
-
+.item-bag{
+    display: grid;
+    grid-template-columns: 2rem 4rem 1fr 5rem;
+    align-items: center;
+    padding: 2.5rem 0;
+}
+.App .item:nth-last-of-type(n+2){
+ 
+    border-bottom: 1px solid #c4c4c4;
+}

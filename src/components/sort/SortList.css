@@ -8,5 +8,9 @@
 .sort-wrapper{
     display: flex;
     margin: 1rem;
-    
+   justify-content: center;
+    padding-bottom: 2rem;
+}
+.sort-title{
+    font-weight: 800;
 }
