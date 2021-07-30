@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import './ItemForm.css'
+import ImageDropZone from '../dragdrop/ImageDropZone';
+
 
 
 const item = {
@@ -10,6 +12,8 @@ const item = {
     acquired:false
 }
 const ItemForm = (props)=>{
+
+    const [imageId, setImageId]= useState(item.imgUlr);
     const [itemInput, setItemInput] = useState(item);
     const [validInput, setValidInput] = useState(false);
     const [, setStoredList] = useState(()=>{
@@ -43,7 +47,7 @@ const ItemForm = (props)=>{
     const submitHandler = event =>{
         event.preventDefault();
    
-       const itemEntered = {...itemInput,id:Math.random().toString()}
+       const itemEntered = {...itemInput,id:Math.random().toString(), imgUlr:imageId}
         setStoredList((prevState)=>{
             const newList = [...prevState, itemEntered];
             localStorage.setItem('list', JSON.stringify(newList));
@@ -57,6 +61,15 @@ const ItemForm = (props)=>{
        
     
     }
+    async function uploadToCloud(url, formData) {
+        const response = await fetch(url, {
+            method: "post",
+            body: formData
+        });
+        const data = await response.json();
+        setImageId(data.public_id);
+        return data;
+    }
 
 
         return <div className="form-container">
@@ -66,22 +79,27 @@ const ItemForm = (props)=>{
               
             <div className="new-item-container">
                 <div className="new-item-content">
-                    <label htmlFor="name">Name</label>
-                    <input type="text" 
+                    {/* <label htmlFor="name">Name</label> */}
+                    <input 
+                    className="form-input"
+                    type="text" 
+                    placeholder="name"
                     id="name" 
                     value={itemInput.name}
                     onChange={changeHandler}/>
                 </div>
                 <div className="new-item-content">
-                    <label htmlFor="price">Price</label>
+                    {/* <label htmlFor="price">Price</label> */}
                     <input
+                    className="form-input"
                     id="price" 
                     type="number" 
                     min="0.01" step="0.01"
+                    placeholder="price"
                     value={itemInput.price} 
                     onChange={changeHandler}/>
                 </div>
-              
+              <ImageDropZone onImageDrop={uploadToCloud}/>
                 <div className="add-item-button-container">
                     <button disabled={!validInput} type="submit" className="add-item btn">Add</button>
                  </div>

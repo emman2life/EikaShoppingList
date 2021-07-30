@@ -39,9 +39,11 @@ list.filter((item)=>item.acquired===true);
 
 
 const items = filteredList.map((item)=>(
-    <Item key={item.id} name={item.name}
+    <Item key={item.id} 
+    name={item.name}
     price={item.price} 
     acquired={item.acquired}
+    imageId={item.imgUlr}
     onAcquired={()=>updateList(item)} />
 ));
 
