@@ -1,0 +1,14 @@
+.dropzone{
+    height: 8rem;
+    margin: 1rem;
+    padding: 1rem;
+    border: 2px dashed salmon;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+.active{
+    border: 2px solid rebeccapurple;
+}
