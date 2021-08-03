@@ -32,14 +32,14 @@ const [uploadedFiles, setUploadedFiles] = useState("");
           {...getRootProps()} 
           className={`${styles.dropzone} ${isDragActive ? styles.active : null}`}>
               <input {...getInputProps()}/>
-              Drop zone
+              Drop image here
               </div>
               <ul>
                   {console.log(uploadedFiles)}
                   <Image 
                       cloudName="dxaezmu9i" 
                       publicId={uploadedFiles} 
-                      width="120" 
+                      width="100" 
                       crop="scale"/>
              
               </ul>

@@ -12,6 +12,7 @@
 display: flex;
 justify-content: center;
 margin-top: 3rem;
+
 }
 .new-item-container{
 display: flex;
@@ -35,10 +36,11 @@ margin: 6rem auto;
     display: inline-block;
     border: none;
     background-color: #cccccc;
-    border-radius: 4px;
     box-sizing: border-box;
     border-radius: 64px;
-    height: 3rem;
+    height: 2.5rem;
+    text-align: center;
+  
   }
 
   .closeAdd{

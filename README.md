@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# About Eika shopping list app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app helps you keep track of item you would like to buy att Eika. You will be able to add the name and the price of item you wish to buy. There is and optional drag a drop zone should you wish to add picture to your item.
 
-## Available Scripts
+## How to use this app
 
-In the project directory, you can run:
+This app was create using react. If you wish to run it on your computer ensure that node js is installed on your computer and run npm install on the directory of this project on your CLI. To start the project go to the directory of this project on your CLI, enter npm start and press enter.
 
-### `npm start`
+### Add item
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Click on Add Item button to add item to the shopping list. A pop up window with name, price and a drop zone will be diplay. The price and name field are required for the add button to be active. The image drop zone is optional. You can drag and drop image there is you like to add image to your item. Field the form and click add button to the add it to the list. You should be able to see the item in the list at this time.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Mark existing item as completed
 
-### `npm test`
+To add item to the completed/acquired list click the checkbox button on the left side of the item you wish to add to the acquired list, the item will automatically be added to the aquired list.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### View completed items
 
-### `npm run build`
+To view completed items click on View completed items link on the bottom of the page to toggle between view items and view completed items
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Sort items
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+By default item list is sorted using item name. You can click sort by name or price to sort list using name or price repectively.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## App requirement
+* must work on browser
+* must be able to add an item name and price.
+* mark a shopping item as completed/acquired.
+* must be able to view completed/aquired shopping items.
+* must be able to close and reopen the page without losing their list.
 
-### `npm run eject`
+* able to drag a picture to each shopping list item and store it in cloud platform. 
+* prevent user from uploading to larg image.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Eika app prototype
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fjwax13xXLoDxdGeUS0pwmA%2FShoppingList%3Fnode-id%3D0%253A1" allowfullscreen></iframe>

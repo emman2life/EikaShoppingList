@@ -49,7 +49,7 @@ function App() {
      { isAddFormDisplay===true? ReactDOM.createPortal(
       <ItemForm dispatch={dispatch}/>, document.getElementById('add-form-root')
      ):''}
-      <button onClick={()=>dispatch({type:"show"})} className="btn">Add</button>
+      <button onClick={()=>dispatch({type:"show"})} className="btn">Add Item</button>
 
       {list.length>0?<ListDisplay acquiredStatus={acquiredList} onShowList={showList}/>:""}
     </div>

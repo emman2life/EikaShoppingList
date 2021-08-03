@@ -1,5 +1,6 @@
 .dropzone{
-    height: 8rem;
+    height: 4rem;
+    width: 12rem;
     margin: 1rem;
     padding: 1rem;
     border: 2px dashed salmon;
