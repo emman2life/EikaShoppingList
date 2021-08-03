@@ -33,5 +33,8 @@ By default item list is sorted using item name. You can click sort by name or pr
 * prevent user from uploading to larg image.
 
 ## Eika app prototype
+<img src="public/EikaPrototype.png"/>
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fjwax13xXLoDxdGeUS0pwmA%2FShoppingList%3Fnode-id%3D0%253A1" allowfullscreen></iframe>
+
+## Eika shopping list component tree
+<img src="public/EikaShoppingList.png"/>
