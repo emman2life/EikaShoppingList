@@ -1,6 +1,6 @@
 # About Eika shopping list app
 
-This app helps you keep track of item you would like to buy att Eika. You will be able to add the name and the price of item you wish to buy. There is and optional drag a drop zone should you wish to add picture to your item.
+This app helps you keep track of item you would like to buy at Eika. You will be able to add the name and the price of item you wish to buy. There is and optional drag a drop zone should you wish to add picture to your item.
 
 ## How to use this app
 
@@ -8,7 +8,7 @@ This app was create using react. If you wish to run it on your computer ensure t
 
 ### Add item
 
-Click on Add Item button to add item to the shopping list. A pop up window with name, price and a drop zone will be diplay. The price and name field are required for the add button to be active. The image drop zone is optional. You can drag and drop image there is you like to add image to your item. Field the form and click add button to the add it to the list. You should be able to see the item in the list at this time.
+Click on Add Item button to add item to the shopping list. A pop up window with name, price and a drop zone will be diplay. The price and name field are required for the add button to be active. The image drop zone is optional. You can drag and drop image there if you like to add image to your item. Field the form and click add button to the add it to the list. You should be able to see the item in the list at this time.
 
 ### Mark existing item as completed
 
