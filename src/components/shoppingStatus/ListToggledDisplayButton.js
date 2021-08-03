@@ -1,6 +1,6 @@
-import './ListDisplay.css';
+import './ListToggledDisplayButton.css';
 
-const ListDisplay = (props)=>{
+const ListToggledDisplayButton = (props)=>{
     const completed ="View completed items";
     const unComplete = "View items";
     return <>  
@@ -10,4 +10,4 @@ const ListDisplay = (props)=>{
   </>
 }
 
-export default ListDisplay;
+export default ListToggledDisplayButton;

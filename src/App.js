@@ -4,7 +4,7 @@ import ShoppingList from './components/ShoppingList';
 import ItemForm from './components/AddItem/ItemForm';
 import ReactDOM from "react-dom";
 import { useState, useReducer } from 'react';
-import ListDisplay from './components/shoppingStatus/ListDisplay';
+import ListToggledDisplayButton from './components/shoppingStatus/ListToggledDisplayButton';
 import useFetch from './customHooks/useFetch';
 import { ListContext } from './ListContext';
 import FormDisplayReducer from './FormDisplayReducer';
@@ -51,7 +51,7 @@ function App() {
      ):''}
       <button onClick={()=>dispatch({type:"show"})} className="btn">Add Item</button>
 
-      {list.length>0?<ListDisplay acquiredStatus={acquiredList} onShowList={showList}/>:""}
+      {list.length>0?<ListToggledDisplayButton acquiredStatus={acquiredList} onShowList={showList}/>:""}
     </div>
     </ListContext.Provider>
   );
