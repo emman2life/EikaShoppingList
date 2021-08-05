@@ -37,4 +37,4 @@ By default item list is sorted using item name. You can click sort by name or pr
 
 
 ## Eika shopping list component tree
-<img src="public/EikaShoppingList.png"/>
+<img src="public/ComponentTree.png"/>

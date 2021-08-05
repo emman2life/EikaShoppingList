@@ -5,7 +5,7 @@
   grid-auto-flow: row;
   justify-content: center;
   justify-items: center;
-  grid-row-gap: 4rem;
+  grid-row-gap: 1.3rem;
   padding-bottom: 4rem;
   grid-template-columns: 100%;
   padding: 2rem;

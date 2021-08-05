@@ -8,6 +8,7 @@ import ListToggledDisplayButton from './components/shoppingStatus/ListToggledDis
 import useFetch from './customHooks/useFetch';
 import { ListContext } from './ListContext';
 import FormDisplayReducer from './FormDisplayReducer';
+import SortList from './components/sort/SortList';
 
 
 function App() {
@@ -16,6 +17,14 @@ function App() {
   const [acquiredList, setAcquiredList] = useState(true);
 
   const list = useFetch(sortBy);
+
+  const welcomeText = (
+    <p className="welcome-text">
+      Welcome to EIKA, thank for using this application. To add item to your
+      shopping list, click the button “Add item” below.
+    </p>
+  );
+
   const sortByHandler = (sortByString) => {
 
     setSortBy(sortByString);
@@ -44,14 +53,20 @@ function App() {
     <div className="App">
       <img className="logo" src={logo} alt="eika"/>
       <h1>Shopping List</h1>
-      <ShoppingList acquired={acquiredList} onSort={sortByHandler} sortName={sortBy}/>
-      
+      {list.length > 0 ? <>
+      <SortList onSort={sortByHandler} />
+      <ShoppingList acquired={acquiredList} sortName={sortBy}/>
+      </>: welcomeText}
      { isAddFormDisplay===true? ReactDOM.createPortal(
       <ItemForm dispatch={dispatch}/>, document.getElementById('add-form-root')
      ):''}
+     
+
+      
       <button onClick={()=>dispatch({type:"show"})} className="btn">Add Item</button>
 
       {list.length>0?<ListToggledDisplayButton acquiredStatus={acquiredList} onShowList={showList}/>:""}
+     
     </div>
     </ListContext.Provider>
   );

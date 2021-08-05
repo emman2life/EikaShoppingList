@@ -1,15 +1,7 @@
 import Item from "./Item";
 import "./ShoppingList.css";
-import SortList from "./sort/SortList";
 import { useContext } from "react";
 import { ListContext } from "../ListContext";
-
-const welcomeText = (
-  <p className="welcome-text">
-    Welcome to EIKA, thank for using this application. To add item to your
-    shopping list, click the button “Add item” below.
-  </p>
-);
 
 const ShoppingList = (props) => {
   const { list, updateShopping } = useContext(ListContext);
@@ -32,17 +24,21 @@ const ShoppingList = (props) => {
       onAcquired={() => updateList(item)}
     />
   ));
-
+  const emptyMessage = props.acquired ? (
+    <p className="center-align-text">No new item in the list to be completed</p>
+  ) : (
+    <p className="center-align-text">No completed item in the list</p>
+  );
   return (
     <div className="item-list">
-      {items.length > 0 ? (
-        <>
-          <SortList onSort={props.onSort} />
-          {items}
-        </>
-      ) : (
-        welcomeText
-      )}
+      <>
+        <h3 className="center-align-text">
+          {props.acquired
+            ? "Showing completed list"
+            : "Showing uncompleted list"}
+        </h3>
+        {items.length > 0 ? items : emptyMessage}
+      </>
     </div>
   );
 };
