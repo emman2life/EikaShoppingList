@@ -34,8 +34,8 @@ const ShoppingList = (props) => {
       <>
         <h3 className="center-align-text">
           {props.acquired
-            ? "Showing completed list"
-            : "Showing uncompleted list"}
+            ? "Showing uncompleted list"
+            : "Showing completed list"}
         </h3>
         {items.length > 0 ? items : emptyMessage}
       </>
