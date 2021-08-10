@@ -1,0 +1,12 @@
+.sortButtonActive{
+    background: #0058abd3;
+    padding: 0.5rem;
+    border-radius: 15px;
+    color: #fff;
+    text-decoration: none;
+    }
+    .sortButtonActive:hover{
+        cursor: none;
+        background: #0058abd3;
+    
+    }

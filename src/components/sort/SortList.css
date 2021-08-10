@@ -1,14 +1,22 @@
 .sort-button{
     background-color: transparent;
     border: none;
-    cursor: pointer;
     font-size: 14px;
     text-decoration: underline;
 }
+.sort-button:hover{
+    cursor: pointer;
+    background-color: #FBD914;
+    color: #ffff;
+    padding: 0.5rem;
+    border-radius: 15px;
+}
+
 .sort-wrapper{
     display: flex;
     margin: 1rem;
    justify-content: center;
+   gap: 3rem;
 }
 .sort-title{
     font-weight: 800;

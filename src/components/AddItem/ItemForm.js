@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './ItemForm.css'
 import ImageDropZone from '../dragdrop/ImageDropZone';
+import TextField from '@material-ui/core/TextField';
 
 
 
@@ -16,6 +17,7 @@ const ItemForm = (props)=>{
     const [imageId, setImageId]= useState(item.imgUlr);
     const [itemInput, setItemInput] = useState(item);
     const [validInput, setValidInput] = useState(false);
+    const [errors, setErrors] = useState(false);
     const [, setStoredList] = useState(()=>{
     try{
     return JSON.parse(localStorage.getItem("list")) ?? []
@@ -79,25 +81,47 @@ const ItemForm = (props)=>{
               
             <div className="new-item-container">
                 <div className="new-item-content">
-                    {/* <label htmlFor="name">Name</label> */}
-                    <input 
+                   
+                    {/* <input 
                     className="form-input"
                     type="text" 
                     placeholder="name"
                     id="name" 
                     value={itemInput.name}
-                    onChange={changeHandler}/>
+                    onChange={changeHandler}/> */}
+                    
+                    <TextField 
+                    required
+                    variant="filled"
+                    color = "primary"
+                    type = "text"
+                     id="name"
+                     label="Name"
+                    value={itemInput.name}
+                    onChange={changeHandler} />
+
                 </div>
                 <div className="new-item-content">
-                    {/* <label htmlFor="price">Price</label> */}
-                    <input
+                    <TextField
+                    required
+                    variant="filled"
+                    color = "primary"
+                    id="price" 
+                    type="number"
+                    label="price"
+                    min="0.01" 
+                    step="0.01"
+                    value={itemInput.price} 
+                    onChange={changeHandler}
+                    />
+                    {/* <input
                     className="form-input"
                     id="price" 
                     type="number" 
                     min="0.01" step="0.01"
                     placeholder="price"
                     value={itemInput.price} 
-                    onChange={changeHandler}/>
+                    onChange={changeHandler}/> */}
                 </div>
               <ImageDropZone onImageDrop={uploadToCloud}/>
                 <div className="add-item-button-container">

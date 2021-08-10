@@ -4,11 +4,26 @@ import 'normalize.css'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import ErrorBoundary from './ErrorBoundary.js'
+import ErrorBoundary from './ErrorBoundary.js';
+import {createTheme, ThemeProvider} from "@material-ui/core/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#0058abd3',
+    },
+    secondary: {
+      main: '#FBD914',
+    },
+  },
+});
 
 ReactDOM.render(
   <ErrorBoundary>
+    <ThemeProvider theme ={theme}>
     <App />
+    </ThemeProvider>
+    
   </ErrorBoundary>,
   document.getElementById('root')
 );

@@ -48,13 +48,28 @@ function App() {
     });
   
   };
+  const deleteItem = (id)=>{
+    
+    const newList = [...list];
+    const index = newList.findIndex(item=>item.id ===id)
+    if(index !== -1){
+        newList.splice(index,1);
+    }
+    
+    localStorage.setItem('list', JSON.stringify(newList));
+    setSortBy((curState)=>{
+      return{...curState}
+    });
+
+}
+
   return (
-    <ListContext.Provider value={{list, updateShopping}}>
+    <ListContext.Provider value={{list, updateShopping, deleteItem}}>
     <div className="App">
       <img className="logo" src={logo} alt="eika"/>
       <h1>Shopping List</h1>
       {list.length > 0 ? <>
-      <SortList onSort={sortByHandler} />
+      <SortList onSort={sortByHandler} sort={sortBy} />
       <ShoppingList acquired={acquiredList} sortName={sortBy}/>
       </>: welcomeText}
      { isAddFormDisplay===true? ReactDOM.createPortal(
