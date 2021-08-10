@@ -3,7 +3,7 @@
 }
 .item-bag{
     display: grid;
-    grid-template-columns: 2rem 4rem 1fr 5rem;
+    grid-template-columns: 3rem 4rem 1fr 5rem 2rem;
     align-items: center;
     padding: 2.5rem 0;
 }
@@ -11,6 +11,4 @@
  
     border-bottom: 1px solid #c4c4c4;
 }
-.checkbox {
-    height: 1.3rem;
-  }
+

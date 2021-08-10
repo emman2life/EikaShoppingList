@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { ListContext } from "../ListContext";
 
 const ShoppingList = (props) => {
-  const { list, updateShopping } = useContext(ListContext);
+  const { list, updateShopping, deleteItem } = useContext(ListContext);
 
   const updateList = (itemToUpdate) => {
     updateShopping(itemToUpdate);
@@ -14,10 +14,12 @@ const ShoppingList = (props) => {
     ? list.filter((item) => item.acquired === false)
     : list.filter((item) => item.acquired === true);
 
+
   const items = filteredList.map((item) => (
     <Item
       key={item.id}
-      name={item.name}
+      onDelete = {()=>deleteItem(item.id)}
+      name={item.name.toUpperCase()}
       price={item.price}
       acquired={item.acquired}
       imageId={item.imgUlr}
