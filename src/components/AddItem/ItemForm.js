@@ -12,12 +12,17 @@ const item = {
     imgUlr:'',
     acquired:false
 }
+const validationMsg = {
+    name: 'Invalid name',
+    price: 'Only numbers are allowed'
+}
 const ItemForm = (props)=>{
 
     const [imageId, setImageId]= useState(item.imgUlr);
+    const [errorMsg, setErrorMsg] = useState('');
     const [itemInput, setItemInput] = useState(item);
     const [validInput, setValidInput] = useState(false);
-    const [errors, setErrors] = useState(false);
+    const [errors, setErrors] = useState({});
     const [, setStoredList] = useState(()=>{
     try{
     return JSON.parse(localStorage.getItem("list")) ?? []
@@ -28,19 +33,37 @@ const ItemForm = (props)=>{
     }
 });
     const changeHandler = (event)=>{
+        if(event.target.id==='price'){
+           
+            validtion(new RegExp(/^\d+(,\d{3})*(\.\d{1,2})?$/).test(event.target.value),  {[event.target.id]:validationMsg.price}, event.target.id)
+        }
+        else if(event.target.id==='name'){
+            validtion(new RegExp(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/).test(event.target.value), {[event.target.id]:validationMsg.name}, event.target.id)
+        }
         setItemInput((prevItem)=>{
            return {...prevItem,
             [event.target.id]: event.target.value}
         })
-    }
 
+    }
+    const validtion = (reg, msg, inputName)=>{
+        if(!reg){
+          setErrors({[inputName]:true});
+
+            setErrorMsg(msg)
+        }
+        else{
+            setErrors({[inputName]:false});
+            setErrorMsg('')
+        }
+      };
     useEffect(()=>{
         if(itemInput.name.trim()>0 || itemInput.price.trim()>0){
             setValidInput(true);
         }else{
             setValidInput(false);
         }
-    
+        
         if(+itemInput.price<0)return;
     },[itemInput])
 
@@ -81,16 +104,10 @@ const ItemForm = (props)=>{
               
             <div className="new-item-container">
                 <div className="new-item-content">
-                   
-                    {/* <input 
-                    className="form-input"
-                    type="text" 
-                    placeholder="name"
-                    id="name" 
-                    value={itemInput.name}
-                    onChange={changeHandler}/> */}
                     
                     <TextField 
+                        error={errors?.name}
+                        helperText={errorMsg?.name}
                     required
                     variant="filled"
                     color = "primary"
@@ -98,30 +115,25 @@ const ItemForm = (props)=>{
                      id="name"
                      label="Name"
                     value={itemInput.name}
-                    onChange={changeHandler} />
+                    onChange={changeHandler}
+                     />
 
                 </div>
                 <div className="new-item-content">
                     <TextField
+                    error={errors?.price}
+                    helperText={errorMsg?.price}
                     required
                     variant="filled"
                     color = "primary"
                     id="price" 
-                    type="number"
                     label="price"
                     min="0.01" 
                     step="0.01"
                     value={itemInput.price} 
                     onChange={changeHandler}
                     />
-                    {/* <input
-                    className="form-input"
-                    id="price" 
-                    type="number" 
-                    min="0.01" step="0.01"
-                    placeholder="price"
-                    value={itemInput.price} 
-                    onChange={changeHandler}/> */}
+            
                 </div>
               <ImageDropZone onImageDrop={uploadToCloud}/>
                 <div className="add-item-button-container">
