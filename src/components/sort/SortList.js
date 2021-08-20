@@ -3,7 +3,8 @@ import styles from '../../style.module.css'
 
 function SortList(props){
     const sortHandler = (event) =>{
-        props.onSort(event.target.value);
+        props.setSortBy(event.target.value)
+        // props.onSort(event.target.value);
     }
     return(
     <div className="sort-wrapper">

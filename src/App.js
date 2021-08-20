@@ -22,12 +22,18 @@ function App() {
 
   const welcomeText = WelcomeScreen();
 
-  const sortByHandler = (sortByString) => {
+  function setShoppingList(newList) {
+    localStorage.setItem('list', JSON.stringify(newList));
+    sortWithCurrentSortState()
+  }
+  function sortWithCurrentSortState() {
+    setSortBy((curState) => {
+      return { ...curState };
+    });
+  }
 
-    setSortBy(sortByString);
-  };
 
-  const showList =()=>{
+  const toggleCompleteIncompleteList =()=>{
     setAcquiredList(prevState=>{
       return !prevState
     })
@@ -39,34 +45,18 @@ function App() {
     const newList = storedList.map((item)=>
       item.id === itemToUpdate.id?{...item,acquired: !item.acquired}:item
     );
-    localStorage.setItem('list', JSON.stringify(newList));
-    setSortBy((curState)=>{
-      return{...curState}
-    });
+    setShoppingList(newList)
   
   };
-  const deleteItem = (id)=>{
-    
-    const newList = [...list];
-    const index = newList.findIndex(item=>item.id ===id)
-    if(index !== -1){
-        newList.splice(index,1);
-    }
-    
-    localStorage.setItem('list', JSON.stringify(newList));
-    setSortBy((curState)=>{
-      return{...curState}
-    });
 
-}
 
   return (
-    <ListContext.Provider value={{list, updateShopping, deleteItem}}>
+    <ListContext.Provider value={{list, updateShopping, setShoppingList}}>
     <div className="App">
       <img className="logo" src={logo} alt="eika"/>
       <h1>Shopping List</h1>
       {list.length > 0 ? <>
-      <SortList onSort={sortByHandler} sort={sortBy} />
+      <SortList setSortBy={setSortBy} sort={sortBy} />
       <ShoppingList acquired={acquiredList} sortName={sortBy}/>
       </>: welcomeText}
      { isAddFormDisplay===true? ReactDOM.createPortal(
@@ -77,11 +67,17 @@ function App() {
       
       <button onClick={()=>dispatch({type:"show"})} className="btn">Add Item</button>
 
-      {list.length>0?<ListToggledDisplayButton acquiredStatus={acquiredList} onShowList={showList}/>:""}
+      {list.length>0?<ListToggledDisplayButton 
+      acquiredStatus={acquiredList}
+       onShowList={toggleCompleteIncompleteList}/>:""}
      
     </div>
     </ListContext.Provider>
   );
+
+ 
 }
 
 export default App;
+
+
