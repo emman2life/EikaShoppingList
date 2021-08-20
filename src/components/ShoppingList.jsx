@@ -4,12 +4,23 @@ import { useContext } from "react";
 import { ListContext } from "../ListContext";
 
 const ShoppingList = (props) => {
-  const { list, updateShopping, deleteItem } = useContext(ListContext);
+  const { list, updateShopping, setShoppingList} = useContext(ListContext);
 
   const updateList = (itemToUpdate) => {
     updateShopping(itemToUpdate);
   };
+  const deleteItem = (id)=>{
+    
+    const newList = [...list];
+    const index = newList.findIndex(item=>item.id ===id)
+    if(index !== -1){
+        newList.splice(index,1);
+    }
+    
+    setShoppingList(newList);
 
+
+}
   const filteredList = props.acquired
     ? list.filter((item) => item.acquired === false)
     : list.filter((item) => item.acquired === true);
